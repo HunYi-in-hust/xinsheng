@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.2">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>地理方位</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+		}
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(255, 190, 221, 0.5);
+        }
+
+        .container {
+            width: 900px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, .4);
+            position: relative;
+            overflow: hidden;
+		}
+        .mirror {
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            border: solid 10px #fff;
+            overflow: hidden;
+            transform: translate(-10px, -10px);
+            box-shadow: 0 0 40px rgba(0, 0, 0, .4);
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .mirror img {
+            position: absolute;
+        }
+    body,td,th {
+    font-size: 36px;
+}
+    a:link {
+    color: rgba(255,0,4,1);
+}
+    </style>
+</head>
+
+<body bgcolor="#FF00E0">
+<a href="../index.html">&nbsp;返回</a>
+
+    <div class="container">
+        <img src="../image/f1bg.png" alt="" width="100%">
+        <div class="mirror">
+        <img src="../image/f1bg.png" alt=""></div>
+</div>
+<script>
+        const container = document.querySelector('.container')
+        const mirror = document.querySelector('.mirror')
+        const bigImg = document.querySelector('.mirror img')
+        container.addEventListener('mousemove', e => {
+            let x = e.clientX
+            let y = e.clientY
+            let left = container.offsetLeft
+            let top = container.offsetTop
+            let mirrorLeft = x - left - mirror.offsetWidth / 2
+            let mirrorTop = y - top - mirror.offsetHeight / 2
+            mirror.style.left = mirrorLeft + 'px'
+            mirror.style.top = mirrorTop + 'px'
+            let bigImgLeft = (mirrorLeft + mirror.offsetWidth / 2) / container.offsetWidth * bigImg.offsetWidth - mirror.offsetWidth / 2
+            let bigImgTop = (mirrorTop + mirror.offsetHeight / 2) / container.offsetHeight * bigImg.offsetHeight - mirror.offsetHeight / 2
+            bigImg.style.left = -bigImgLeft + 'px'
+            bigImg.style.top = -bigImgTop + 'px'
+        })
+    </script>
+</body>
+</html><table width="200" border="0">
+  <tbody>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
